@@ -24,6 +24,10 @@ Ce projet est réalisé dans le but de pratiquer du dev fullstack, particulière
 
 ### Back-end (`todo-api`)
 
+<!-- TUTO CRUD 
+  https://www.youtube.com/watch?v=Iv4VIBEBHKk 
+-->
+
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
 - [Mongoose](https://mongoosejs.com/) – ODM pour MongoDB
