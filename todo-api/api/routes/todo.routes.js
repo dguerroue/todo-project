@@ -1,36 +1,24 @@
 const express = require('express');
-const { setTodo } = require('../controllers/todo.controller');
+const { getTodos, setTodo, updateTodo, deleteTodo, toggleTodoByID } = require('../controllers/todo.controller');
 const router = express.Router();
 
-// Get all todos
-router.get('/', (req, res) => {
-  res.json({
-    body: {
-      todos: [
-        {
-          id: 1,
-          text: 'Acheter des tomates'
-        }
-      ]
-    }
-  })
-});
+/* --- START CRUD --- */
 
-// Post new todo item
+// Create new todo item
 router.post('/', setTodo);
+
+// Get all todos
+router.get('/', getTodos);
  
 // Update todo item by ID
-router.put('/:id', (req, res) => {
-  res.json({
-    messageId: req.params.id
-  })
-})
+router.put('/:id', updateTodo);
 
 // Delete todo item by ID
-router.delete('/:id', (req, res) => {
-  res.json({
-    message: "Todo ID deleted: " + req.params.id
-  })
-})
+router.delete('/:id', deleteTodo);
+
+/* --- END CRUD --- */
+
+// Toggle todo by id
+router.put('/toggle/:id', toggleTodoByID);
 
 module.exports = router;
