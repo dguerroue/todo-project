@@ -1,4 +1,5 @@
 const express = require('express');
+const { setTodo } = require('../controllers/todo.controller');
 const router = express.Router();
 
 // Get all todos
@@ -16,11 +17,7 @@ router.get('/', (req, res) => {
 });
 
 // Post new todo item
-router.post('/', (req, res) => {
-  res.json({
-    message: req.body
-  })
-})
+router.post('/', setTodo);
  
 // Update todo item by ID
 router.put('/:id', (req, res) => {
