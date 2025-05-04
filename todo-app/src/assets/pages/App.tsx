@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import Button from './Button';
-import Checkbox from './Checkbox';
+import api from '../helpers/api';
+import Button from '../components/Button';
+import Checkbox from '../components/Checkbox';
 
 type Task = {
   _id: string,
@@ -14,13 +14,12 @@ type PostTask = {
   completed: boolean
 }
 
-const API_URL = 'http://localhost:5000/api/todos';
+// API calls
+const getTodos = () => api.get('/todos');
 
-const getTodos = () => axios.get(API_URL);
+const createTodo = (item: PostTask) => api.post('/todos', item);
 
-const createTodo = (item: PostTask) => axios.post(API_URL, item);
-
-const toggleTodo = (id: string) => axios.put(`${API_URL}/toggle/${id}`);
+const toggleTodo = (id: string) => api.put(`/todos/toggle/${id}`);
 
 function App() {
   const tasks: Task[] = [];

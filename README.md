@@ -49,7 +49,7 @@ cd <nom-du-dossier>
 ```bash
 cd todo-api
 npm install
-npm run dev
+npm run server
 ```
 
 Par défaut, l’API tourne sur `http://localhost:5000`.

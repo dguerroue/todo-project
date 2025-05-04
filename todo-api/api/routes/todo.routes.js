@@ -1,14 +1,15 @@
 const express = require('express');
 const { getTodos, setTodo, updateTodo, deleteTodo, toggleTodoByID } = require('../controllers/todo.controller');
+const protect = require('../middlewares/auth.middleware');
 const router = express.Router();
 
 /* --- START CRUD --- */
 
 // Create new todo item
-router.post('/', setTodo);
+router.post('/', protect, setTodo);
 
 // Get all todos
-router.get('/', getTodos);
+router.get('/', protect, getTodos);
  
 // Update todo item by ID
 router.put('/:id', updateTodo);
