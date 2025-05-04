@@ -1,8 +1,6 @@
 // api.ts
 import axios from 'axios';
 
-const token = localStorage.getItem('token');
-console.log('token', token);
 const API_BASE_URL = 'http://localhost:5000/api'; // TODO: env variable
 
 const api = axios.create({

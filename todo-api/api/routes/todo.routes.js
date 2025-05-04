@@ -12,14 +12,14 @@ router.post('/', protect, setTodo);
 router.get('/', protect, getTodos);
  
 // Update todo item by ID
-router.put('/:id', updateTodo);
+router.put('/:id', protect, updateTodo);
 
 // Delete todo item by ID
-router.delete('/:id', deleteTodo);
+router.delete('/:id', protect, deleteTodo);
 
 /* --- END CRUD --- */
 
 // Toggle todo by id
-router.put('/toggle/:id', toggleTodoByID);
+router.put('/toggle/:id', protect, toggleTodoByID);
 
 module.exports = router;

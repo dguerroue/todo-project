@@ -18,18 +18,33 @@ module.exports.setTodo = async(req, res) => {
     });
   }
 
-  const todo = await TodoModel.create({
-    name: req.body.name,
-    completed: false
-  });
-
-  res.status(200).json(todo);
+  try {
+    const todo = await TodoModel.create({
+      name: req.body.name,
+      completed: false,
+      userId: req.user.id,
+    });
+  
+    res.status(200).json(todo);
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error creating todo',
+      error: error.message
+    });
+  }
 };
 
 // Get all todos
 module.exports.getTodos = async(req, res) => {
-  const todos = await TodoModel.find();
-  res.status(200).json(todos);
+  try {
+    const todos = await TodoModel.find({ userId: req.user.id });
+    res.status(200).json(todos);
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error fetching todos',
+      error: error.message
+    });
+  }
 };
 
 // Update todo item by ID
