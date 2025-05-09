@@ -26,6 +26,7 @@ const eslintConfig = tseslint.config(
           ignoreRestSiblings: true,
         },
       ],
+      'react/no-unescaped-entities': 'off',
     },
   }
 );
