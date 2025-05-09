@@ -2,7 +2,17 @@
 
 Un projet fullstack de gestion de tâches, composé d'une application front-end et d'une API back-end.
 
-Ce projet est réalisé dans le but de pratiquer du dev fullstack, particulièrement le back-end avec Node.js et Express, ainsi que le front-end avec React.
+Ce projet est réalisé dans le but de pratiquer du dev fullstack, particulièrement le back-end avec Node.js & Express, mongoDB & mongoose, ainsi que le front-end avec React.
+
+## Features
+- CRUD (Create, Read, Update, Delete) pour les tâches
+- Marquer les tâches comme complétées
+- Modifier les tâches
+- Filtrer les tâches par statut (complétées / non complétées) et par date
+- Cacher les tâches complétées
+- Pouvoir afficher les tâches complétées
+- Pouvoir supprimer toutes les tâches complétées
+- Ajouter un système de priorité (haute, moyenne, basse) (avec des carrés couleurs différentes)
 
 ---
 
