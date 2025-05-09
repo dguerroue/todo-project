@@ -37,7 +37,7 @@ module.exports.setTodo = async(req, res) => {
 // Get all todos
 module.exports.getTodos = async(req, res) => {
   try {
-    const todos = await TodoModel.find({ userId: req.user.id });
+    const todos = await TodoModel.find({ userId: req.user.id }).sort({ completed: 'asc', createdAt: 'desc' });
     res.status(200).json(todos);
   } catch (error) {
     res.status(500).json({
