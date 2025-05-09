@@ -1,25 +1,17 @@
 import { useEffect, useState } from 'react';
 import api from '../helpers/api';
 import Button from '../components/Button';
-import Checkbox from '../components/Checkbox';
+import CheckboxItem from '../components/CheckboxItem';
 
-type Task = {
-  _id: string,
-  name: string,
-  completed: boolean
-}
-
-type PostTask = {
-  name: string,
-  completed: boolean
-}
+import { Task, PostTask, PutTask } from '../types';
 
 // API calls
 const getTodos = () => api.get('/todos');
 
 const createTodo = (item: PostTask) => api.post('/todos', item);
 
-const toggleTodo = (id: string) => api.put(`/todos/toggle/${id}`);
+// const toggleTodo = (id: string) => api.put(`/todos/toggle/${id}`);
+const updateTodo = (id: string, data: PutTask) => api.put(`/todos/${id}`, data);
 
 function App() {
   const tasks: Task[] = [];
@@ -57,11 +49,11 @@ function App() {
     setNewTaskName('');
   }
 
-  async function handleTaskChange(task: Task, checked: boolean) {
-    console.log('Task changed:', task, 'Checked:', checked);
+  async function handleTaskChange(task: Task, data: PutTask) {
+    console.log('Task changed:', task, data);
     // Update the task state here if needed
 
-    await toggleTodo(task._id);
+    await updateTodo(task._id, data);
   }
 
   return (
@@ -103,7 +95,7 @@ function App() {
           ) : (
             <div className='flex flex-col gap-4'>
               {taskList.map((task: Task) => (
-                <Checkbox key={task._id} label={task.name} id={task._id.toString()} checked={task.completed} onChange={(value) => handleTaskChange(task, value)} />
+                <CheckboxItem key={task._id} label={task.name} id={task._id.toString()} completed={task.completed} onChange={(data) => handleTaskChange(task, data)} />
               ))}
             </div>
           )

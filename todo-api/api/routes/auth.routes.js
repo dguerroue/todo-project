@@ -12,6 +12,7 @@ const generateToken = (user) => {
 // Inscription
 router.post('/register', async (req, res) => {
   const { email, password } = req.body;
+
   try {
     const userExists = await User.findOne({ email });
     if (userExists) return res.status(400).json({ message: 'Email déjà utilisé' });
@@ -28,7 +29,7 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-    console.log(user);
+  
     if (!user || !(await user.matchPassword(password))) {
       return res.status(401).json({ message: 'Email ou mot de passe invalide' });
     }
